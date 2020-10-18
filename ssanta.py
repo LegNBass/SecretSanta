@@ -21,14 +21,15 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     parser.add_argument(
-        'list_json',
+        'list_file',
         help="The JSON string containing the list"
     )
     args = parser.parse_args()
 
-    print(args.list_json)
+    print(args.list_file)
 
-    couples = json.loads(args.list_json)
-    print(
-        randomize(couples)
-    )
+    with open(args.list_file) as _f:
+        couples = json.load(_f)
+        print(
+            randomize(couples)
+        )
